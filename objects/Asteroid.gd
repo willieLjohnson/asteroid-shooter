@@ -10,3 +10,7 @@ func explode():
 	
 	get_parent().remove_child(self)
 	queue_free()
+
+
+func _on_VisibilityNotifier2D_viewport_exited(viewport: Viewport) -> void:
+	queue_free()
