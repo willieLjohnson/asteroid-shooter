@@ -15,3 +15,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = SPEED
 	
 	move_and_collide(velocity * delta)
+
+func _unhandled_key_input(event: InputEventKey) -> void:
+	if (event.is_action_pressed("shoot")):
+		$LaserWeapon.shoot()
