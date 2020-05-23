@@ -5,3 +5,4 @@ func _ready() -> void:
 
 func call_wrap_around():
 	get_tree().call_group("wrap_around", "recalculate_wrap_area")
+ 
