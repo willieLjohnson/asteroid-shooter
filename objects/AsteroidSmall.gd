@@ -18,6 +18,7 @@ func explode() -> void:
 	emit_signal("explode")
 	
 	emit_signal("score_changed", score_value)
+	_spawn_score()
 	
 	get_parent().remove_child(self)
 	queue_free()
