@@ -12,11 +12,13 @@ func _on_Player_player_died() -> void:
 	$MusicPlayer.stream = load("res://assets/audio/music/sawsquarenoise_-_06_-_Towel_Defence_Jingle_Loose.ogg")
 	$MusicPlayer.stream.loop = false
 	$MusicPlayer.volume_db = -5
+	$MusicPlayer.pitch_scale = 0.7
 	
 	$AsteroidSpawner/SpawnTimer.stop()
 	
 	for asteroid in get_tree().get_nodes_in_group("asteroids"):
-		asteroid.get_node("AudioStreamPlayer2D").stop()
+		if (!asteroid.is_queued_for_deletion() and asteroid.has_node("AudioStreamPlayer2D")):
+			asteroid.get_node("AudioStreamPlayer2D").stop()
 	
 	$GameOverTimer.start()
 

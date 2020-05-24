@@ -2,6 +2,9 @@ extends Node
 
 var asteroid_scene = load("res://objects/Asteroid.tscn")
 
+var asteroid_spawn_interval := 2.0
+var difficulty_index := 1.5
+
 func _ready() -> void:
 	_spawn_asteroid()
 	
@@ -25,3 +28,10 @@ func _set_asteroid_trajectory(asteroid: RigidBody2D) -> void:
 	
 func _on_SpawnTimer_timeout() -> void:
 	_spawn_asteroid()
+
+
+func _on_DifficultyTimer_timeout() -> void:
+	$SpawnTimer.wait_time = float(2.0) / float(difficulty_index)
+	difficulty_index += 1
+	print($SpawnTimer.wait_time)
+	
