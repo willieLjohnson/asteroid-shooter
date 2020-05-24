@@ -1,25 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene format=2]
 
-[sub_resource type="ParticlesMaterial" id=1]
-emission_shape = 1
-emission_sphere_radius = 1.0
-flag_disable_z = true
-spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 150.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 20.0
-scale_random = 0.5
-color = Color( 0.545098, 0.592157, 0.611765, 1 )
-
-[node name="ParticlesAsteroidExplosion" type="Particles2D"]
+[node name="ParticlesAsteroidExplosion" type="CPUParticles2D"]
 emitting = false
+amount = 20
 lifetime = 0.5
 one_shot = true
-explosiveness = 1.0
+explosiveness = 0.7
 randomness = 1.0
-process_material = SubResource( 1 )
-__meta__ = {
-"_editor_description_": ""
-}
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 150.0
+angular_velocity = 40.0
+angular_velocity_random = 0.5
+scale_amount = 10.0
+scale_amount_random = 0.5
+color = Color( 0.545098, 0.592157, 0.611765, 1 )
