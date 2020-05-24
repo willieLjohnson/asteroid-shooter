@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://entities/AsteroidSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://entities/MainCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/UbuntuMono-Bold.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://ui/Score.gd" type="Script" id=7]
+[ext_resource path="res://assets/audio/music/sawsquarenoise_-_03_-_Towel_Defence_Ingame.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -27,6 +28,10 @@ shader_param/speed_scale = 0.5
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 200
 font_data = ExtResource( 6 )
 
 [node name="Game" type="Node2D"]
@@ -83,4 +88,29 @@ custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 2
 script = ExtResource( 7 )
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+autoplay = true
+
+[node name="GameOverLabel" type="Label" parent="."]
+visible = false
+margin_left = 170.536
+margin_top = 181.755
+margin_right = 1170.54
+margin_bottom = 381.755
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Game Over!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="laser_shoot" from="Player" to="MainCamera" method="_on_Player_laser_shoot"]
+[connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
