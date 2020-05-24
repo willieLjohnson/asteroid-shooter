@@ -35,3 +35,10 @@ func _on_DifficultyTimer_timeout() -> void:
 	difficulty_index += 1
 	print($SpawnTimer.wait_time)
 	
+func restart():
+	$SpawnTimer.stop()
+	$DifficultyTimer.stop()
+	asteroid_spawn_interval = 2
+	difficulty_index = 1.5
+	$SpawnTimer.start()
+	$DifficultyTimer.start()

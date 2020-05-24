@@ -7,6 +7,13 @@ signal player_died
 
 var player_explosion_scene = load("res://objects/ParticlesPlayerExplosion.tscn")
 
+func _ready() -> void:
+	var camera = get_parent().get_node("MainCamera")
+	self.connect("laser_shoot", camera, "_on_Player_laser_shoot")
+	
+	var game = get_parent()
+	self.connect("player_died", game, "_on_Player_player_died")
+
 func _physics_process(delta: float) -> void:
 	var velocity := Vector2()
 	

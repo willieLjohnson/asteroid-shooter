@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entities/AsteroidSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/Player.tscn" type="PackedScene" id=2]
@@ -34,6 +34,10 @@ font_data = ExtResource( 6 )
 size = 200
 font_data = ExtResource( 6 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 42
+font_data = ExtResource( 6 )
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -47,7 +51,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 1300, 740 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 653.9, 678.763 )
+position = Vector2( 640, 680 )
 
 [node name="AsteroidSpawner" parent="." instance=ExtResource( 1 )]
 
@@ -109,8 +113,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RestartLabel" type="Label" parent="GameOverLabel"]
+margin_left = 227.058
+margin_top = 477.008
+margin_right = 731.058
+margin_bottom = 520.008
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Press \"Space\" to Restart"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GameOverTimer" type="Timer" parent="."]
 one_shot = true
-[connection signal="laser_shoot" from="Player" to="MainCamera" method="_on_Player_laser_shoot"]
-[connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]
