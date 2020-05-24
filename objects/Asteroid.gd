@@ -6,6 +6,8 @@ var explosion_particles_scene := load("res://objects/ParticlesAsteroidExplosion.
 var asteroid_small_scene := load("res://objects/AsteroidSmall.tscn")
 var rand_num_generator := RandomNumberGenerator.new()
 
+var explosion_pitch = 1
+
 var is_exploded := false
 
 func _ready() -> void:
@@ -19,6 +21,7 @@ func explode() -> void:
 	is_exploded = true
 	
 	_explosion_particles()
+	_play_explosion_sound()
 	
 	emit_signal("explode")
 	
@@ -26,6 +29,14 @@ func explode() -> void:
 	
 	get_parent().remove_child(self)
 	queue_free()
+	
+func _play_explosion_sound() -> void:
+	var explosion_sound = AudioStreamPlayer2D.new()
+	explosion_sound.stream = load("res://assets/audio/sfx/AsteroidExplosion.wav")
+	explosion_sound.pitch_scale = explosion_pitch
+	explosion_sound.position = self.position
+	get_parent().add_child(explosion_sound)
+	explosion_sound.play(0)
 	
 func _explosion_particles() -> void:
 	var explosion_particles = explosion_particles_scene.instance()

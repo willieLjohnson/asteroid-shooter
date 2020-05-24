@@ -10,6 +10,10 @@ func explode() -> void:
 		
 	is_exploded = true
 	
+	_explosion_particles()
+	explosion_pitch = 1.2
+	_play_explosion_sound()
+	
 	emit_signal("explode")
 	
 	get_parent().remove_child(self)
