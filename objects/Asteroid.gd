@@ -10,9 +10,14 @@ var explosion_pitch = 1
 
 var is_exploded := false
 
+signal score_changed
+var score_value = 100
+
 func _ready() -> void:
 	var main_camera = get_node("/root/Game/MainCamera")
 	self.connect("explode", main_camera, "asteroid_exploded")
+	var label = get_tree().get_root().get_node("Game/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score")
+	self.connect("score_changed", label, "update_score")
 
 func explode() -> void:
 	if is_exploded:
@@ -24,6 +29,8 @@ func explode() -> void:
 	_play_explosion_sound()
 	
 	emit_signal("explode")
+	
+	emit_signal("score_changed", score_value)
 	
 	_spawn_asteroid_smalls(4) 
 	
