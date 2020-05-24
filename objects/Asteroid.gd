@@ -2,6 +2,7 @@ extends RigidBody2D
 
 signal explode
 
+var explosion_particles_scene := load("res://objects/ParticlesAsteroidExplosion.tscn")
 var asteroid_small_scene := load("res://objects/AsteroidSmall.tscn")
 var rand_num_generator := RandomNumberGenerator.new()
 
@@ -17,12 +18,21 @@ func explode() -> void:
 		
 	is_exploded = true
 	
+	_explosion_particles()
+	
 	emit_signal("explode")
 	
 	_spawn_asteroid_smalls(4) 
 	
 	get_parent().remove_child(self)
 	queue_free()
+	
+func _explosion_particles() -> void:
+	var explosion_particles = explosion_particles_scene.instance()
+	explosion_particles.position = self.position
+	get_parent().add_child(explosion_particles)
+	explosion_particles.emitting = true
+
 
 func _spawn_asteroid_smalls(num: int) -> void:
 	for i in range (num):
