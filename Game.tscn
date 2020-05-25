@@ -44,7 +44,7 @@ script = ExtResource( 3 )
 [node name="Background" type="Sprite" parent="."]
 material = SubResource( 2 )
 position = Vector2( 2.13171, 0 )
-z_index = -2
+z_index = -10
 texture = ExtResource( 4 )
 centered = false
 offset = Vector2( -10, -10 )

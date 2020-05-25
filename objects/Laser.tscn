@@ -31,7 +31,6 @@ width_curve = SubResource( 3 )
 default_color = Color( 0.682353, 0.239216, 0.239216, 1 )
 gradient = SubResource( 2 )
 targetPath = NodePath("../..")
-trailLength = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

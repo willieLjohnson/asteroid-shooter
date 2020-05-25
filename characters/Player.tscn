@@ -10,8 +10,8 @@
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.579545, 1 )
-colors = PoolColorArray( 1, 0.498039, 0.380392, 0, 1, 0.415686, 0.4, 1, 1, 0.836667, 0.3, 1 )
+offsets = PoolRealArray( 0, 0.75, 1 )
+colors = PoolColorArray( 1, 0.498039, 0.380392, 0, 1, 0.415686, 0.4, 1, 1, 0.934375, 0.4, 1 )
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, -38, 48, 28, -48, 28 )
@@ -27,11 +27,11 @@ texture = ExtResource( 1 )
 
 [node name="Trail" parent="Sprite/Node" instance=ExtResource( 5 )]
 z_index = -1
+width = 13.0
 width_curve = SubResource( 2 )
 default_color = Color( 1, 0.415686, 0.4, 0 )
 gradient = SubResource( 3 )
 targetPath = NodePath("../..")
-trailLength = 10
 speedY = -500
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
