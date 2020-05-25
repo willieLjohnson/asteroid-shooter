@@ -64,7 +64,8 @@ func _explosion_particles() -> void:
 
 
 func _spawn_asteroid_smalls(num: int) -> void:
-	for i in range (num):
+	var numByScale = num * self.get_node("Sprite").scale.x
+	for i in range (numByScale):
 		_spawn_asteroid_small()
 	
 func _spawn_asteroid_small() -> void:

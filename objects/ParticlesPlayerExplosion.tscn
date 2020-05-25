@@ -16,6 +16,7 @@ offsets = PoolRealArray( 0, 0, 0.15, 0.4, 1 )
 colors = PoolColorArray( 1, 1, 0.76, 1, 0.986, 1, 0.16, 1, 1, 0.902, 0.16, 1, 1, 0.65, 0.16, 1, 1, 0.188235, 0.160784, 1 )
 
 [node name="ParticlesPlayerExplosion" type="CPUParticles2D"]
+modulate = Color( 1.5, 1.5, 1.5, 1 )
 z_index = 1
 emitting = false
 amount = 200
