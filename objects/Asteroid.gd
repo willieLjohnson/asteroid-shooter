@@ -20,6 +20,7 @@ func _ready() -> void:
 	var label = get_tree().get_root().get_node("Game/GUI/MarginContainer/HBoxContainer/VBoxContainer/Score")
 	self.connect("score_changed", label, "update_score")
 
+
 func explode() -> void:
 	if is_exploded:
 		return

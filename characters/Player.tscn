@@ -6,14 +6,14 @@
 [ext_resource path="res://objects/LaserWeapon.tscn" type="PackedScene" id=4]
 [ext_resource path="res://common/Trail.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.75, 1 )
 colors = PoolColorArray( 1, 0.498039, 0.380392, 0, 1, 0.415686, 0.4, 1, 1, 0.934375, 0.4, 1 )
 
-[sub_resource type="ConvexPolygonShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 0, -38, 48, 28, -48, 28 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -28,14 +28,16 @@ texture = ExtResource( 1 )
 [node name="Trail" parent="Sprite/Node" instance=ExtResource( 5 )]
 z_index = -1
 width = 13.0
-width_curve = SubResource( 2 )
+width_curve = SubResource( 1 )
 default_color = Color( 1, 0.415686, 0.4, 0 )
-gradient = SubResource( 3 )
+gradient = SubResource( 2 )
 targetPath = NodePath("../..")
 speedY = -500
+maxFrames = 3
+wobble = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Wraparound" parent="." instance=ExtResource( 3 )]
 verticalWrapping = false
@@ -46,5 +48,5 @@ position = Vector2( 0, -50 )
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
