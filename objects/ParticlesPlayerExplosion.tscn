@@ -12,10 +12,11 @@ max_value = 2.5
 _data = [ Vector2( 0, 2.5 ), 0.0, 0.0, 0, 0, Vector2( 1, 1.22727 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0, 0.15, 0.4, 0.8 )
-colors = PoolColorArray( 0.952941, 0.960784, 0.831373, 1, 0.866667, 0.843137, 0.215686, 1, 0.607843, 0.352941, 0.0784314, 1, 0.866667, 0.329412, 0.117647, 1, 1, 0.376471, 0, 1 )
+offsets = PoolRealArray( 0, 0, 0.15, 0.4, 1 )
+colors = PoolColorArray( 1, 1, 0.76, 1, 0.986, 1, 0.16, 1, 1, 0.902, 0.16, 1, 1, 0.65, 0.16, 1, 1, 0.188235, 0.160784, 1 )
 
 [node name="ParticlesPlayerExplosion" type="CPUParticles2D"]
+z_index = 1
 emitting = false
 amount = 200
 one_shot = true
@@ -30,9 +31,11 @@ initial_velocity_random = 0.5
 linear_accel = 100.0
 linear_accel_random = 0.2
 linear_accel_curve = SubResource( 1 )
-scale_amount = 2.0
+scale_amount = 10.0
 scale_amount_curve = SubResource( 2 )
 color_ramp = SubResource( 3 )
+hue_variation = 0.09
+hue_variation_random = 0.66
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 1 )
