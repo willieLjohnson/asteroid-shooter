@@ -32,6 +32,10 @@ func _physics_process(delta: float) -> void:
 		velocity.y = SPEED
 	
 	move_and_collide(velocity * delta)
+	if position.y > 720:
+		position.y = 720
+	if position.y < 0:
+		position.y = 0
 
 func _unhandled_key_input(event: InputEventKey) -> void:
 	if (event.is_action_pressed("shoot")):
