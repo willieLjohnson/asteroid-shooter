@@ -19,8 +19,17 @@ func _physics_process(delta: float) -> void:
 	
 	if (Input.is_action_pressed("ui_left")):
 		velocity.x = -SPEED
-	if (Input.is_action_pressed("ui_right")):
+		rotation = -0.5
+	elif (Input.is_action_pressed("ui_right")):
 		velocity.x = SPEED
+		rotation = 0.5
+	else:
+		rotation = 0.0
+		
+	if (Input.is_action_pressed("ui_up")):
+		velocity.y = -SPEED
+	if (Input.is_action_pressed("ui_down")):
+		velocity.y = SPEED
 	
 	move_and_collide(velocity * delta)
 
